@@ -66,7 +66,6 @@ This document explains the theory behind Q-learning in simple terms, and then wa
 11. [Training Process](#training-process)
 12. [Results](#results)
 13. [How to Run](#how-to-run)
-14. [Future Work](#future-work)
 
 ---
 
