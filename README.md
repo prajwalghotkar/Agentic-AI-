@@ -278,4 +278,4 @@ Actual numbers, plots, and the hyperparameter sweep comparison are generated dir
 ---
 https://colab.research.google.com/drive/1RMy049_qcFZjeLnv3XV8YuH8RhI-xMKx#scrollTo=XjueTCK43CHE&fullscreenOutput=true
 
-- Please  
+- Please refer to the Learning_Agents_using_Q_Learning.ipynb file for better understanding.
