@@ -279,3 +279,72 @@ Actual numbers, plots, and the hyperparameter sweep comparison are generated dir
 https://colab.research.google.com/drive/1RMy049_qcFZjeLnv3XV8YuH8RhI-xMKx#scrollTo=XjueTCK43CHE&fullscreenOutput=true
 
 - Please refer to the Learning_Agents_using_Q_Learning.ipynb file for better understanding.
+
+
+---
+
+# Agentic AI Chatbot using LangGraph
+
+A conversational AI agent built with **LangGraph** and **Ollama (Llama 3.1)** that goes beyond simple question-answering — it can reason about when to use tools, remembers conversation history, and streams responses in real time.
+
+## About this project
+
+As part of my journey into agentic AI development, I built this chatbot to understand how modern AI agents actually work under the hood — not just calling an LLM, but designing a **state machine** where the model can decide its own next steps: answer directly, or call a tool and use that result to form a better answer.
+
+This project uses LangGraph's core building blocks — **State, Nodes, and Edges** — to create a graph-based agent instead of a simple linear script. The chatbot can:
+
+- Answer general questions using a local LLM (Llama 3.1 via Ollama)
+- Decide on its own when to use a tool (ReAct-style reasoning)
+- Perform calculations using a built-in calculator tool
+- Tell the current date and time
+- Save notes/reminders the user asks it to remember
+- Remember the full conversation across multiple turns (persistent memory)
+- Stream its response word-by-word, just like a real chat interface
+- Automatically save every conversation to a timestamped transcript file
+
+## Tech Stack
+
+- **Python**
+- **LangGraph** — for building the agent as a state graph
+- **LangChain Core** — for message handling and tool definitions
+- **Ollama (Llama 3.1)** — local LLM, running entirely on-device
+- **Colorama** (optional) — for a cleaner CLI experience
+
+## How it works
+
+The chatbot is modeled as a graph with two nodes:
+
+1. **`chatbot` node** — sends the conversation to the LLM and gets a response
+2. **`tools` node** — executes a tool (calculator, datetime, or note-saving) if the LLM decides one is needed
+
+The graph loops between these two nodes until the LLM is confident it has a final answer, then ends the turn. A `MemorySaver` checkpointer keeps track of the full conversation so context isn't lost between messages.
+
+## Getting Started
+
+1. Install Ollama and pull the model:
+   ```
+   ollama pull llama3.1
+   ```
+2. Install the Python dependencies:
+   ```
+   pip install --upgrade langgraph langchain-core langchain-ollama colorama
+   ```
+3. Run the chatbot:
+   ```
+   python chatbot.py
+   ```
+
+> The full implementation is in [`chatbot.py`](./chatbot.py) — check that file to see the complete state graph, tool definitions, and runtime logic.
+
+## Example interactions
+
+```
+User: What is 45 * 12 + 8?
+Assistant: 548
+
+User: Remember that I need to submit my resume by Friday
+Assistant: Saved note: submit resume by Friday
+
+User: What's today's date?
+Assistant: Sunday, 06 September 2026
+```
