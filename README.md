@@ -348,3 +348,8 @@ Assistant: Saved note: submit resume by Friday
 User: What's today's date?
 Assistant: Sunday, 06 September 2026
 ```
+<img width="949" height="479" alt="Screenshot 2026-09-06 153942" src="https://github.com/user-attachments/assets/72ab56b1-6dee-43aa-b371-b64bc44687a8" />
+
+<img width="912" height="445" alt="Screenshot 2026-09-06 154521" src="https://github.com/user-attachments/assets/335830dd-fa96-4174-9f32-d38d125bb40e" />
+
+
