@@ -334,7 +334,7 @@ The graph loops between these two nodes until the LLM is confident it has a fina
    python chatbot.py
    ```
 
-> The full implementation is in [[`chatbot.py`](./chatbot.py)](https://github.com/prajwalghotkar/Agentic-AI-/blob/main/python_chatbot.py) — check that file to see the complete state graph, tool definitions, and runtime logic.
+> The full implementation is in https://github.com/prajwalghotkar/Agentic-AI-/blob/main/python_chatbot.py — check that file to see the complete state graph, tool definitions, and runtime logic.
 
 ## Example interactions
 
