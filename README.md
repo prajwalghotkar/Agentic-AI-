@@ -352,4 +352,124 @@ Assistant: Sunday, 06 September 2026
 
 <img width="912" height="445" alt="Screenshot 2026-09-06 154521" src="https://github.com/user-attachments/assets/335830dd-fa96-4174-9f32-d38d125bb40e" />
 
+-----
+
+# LangGraph Tool-Calling Agent with Groq
+
+## What this notebook does
+
+This notebook builds a simple **LangGraph tool-calling agent** using **Groq** as the LLM provider.
+
+The agent has three tools:
+
+1. **DuckDuckGo search** — searches the web through LangChain's `DuckDuckGoSearchRun`.
+2. **multiply(a, b)** — multiplies two numbers.
+3. **add(a, b)** — adds two numbers.
+
+The LangGraph workflow lets the Groq model decide when a tool is needed, sends the tool call to the appropriate Python function, returns the tool result to the model, and then produces the final response.
+
+## Workflow
+
+```text
+User question
+     ↓
+LangGraph Assistant
+     ↓
+Groq LLM
+     ↓
+Does the model need a tool?
+     ↓
+  ┌───┴────┐
+  │        │
+ No       Yes
+  │        │
+Final    ToolNode
+answer     ↓
+        Tool result
+           ↓
+       Groq LLM
+           ↓
+       Final answer
+```
+
+## Example
+
+The notebook contains this example request:
+
+> what is the weather in delhi. Multiply it by 2 and add 5.
+
+The agent can:
+
+1. Use DuckDuckGo search to get weather information.
+2. Use `multiply` on the temperature and `2`.
+3. Use `add` on the multiplication result and `5`.
+4. Return the final answer.
+
+## API provider
+
+The notebook uses:
+
+- **Groq API**
+- LangChain's `ChatGroq`
+- Model: `llama-3.3-70b-versatile`
+- LangGraph for the agent workflow
+- DuckDuckGo for web search
+
+## How to run
+
+### 1. Open the notebook
+
+Open `langgraph_tools_Bindings_agents_groq.ipynb` in Google Colab or another Jupyter environment.
+
+### 2. Run the installation cell
+
+The first cell installs:
+
+- `langchain`
+- `langchain-community`
+- `langgraph`
+- `langchain-groq`
+- `duckduckgo-search`
+
+### 3. Enter your Groq API key
+
+When the notebook asks:
+
+```text
+Enter your Groq API key:
+```
+
+paste your Groq API key.
+
+The key is entered at runtime and is **not stored inside the notebook**.
+
+If `GROQ_API_KEY` is already set as an environment variable, the notebook uses it.
+
+### 4. Run the cells from top to bottom
+
+Run the cells in order.
+
+## Security
+
+Do not paste your real API key directly into the Python source code.
+
+Use the runtime prompt or an environment variable named:
+
+```text
+GROQ_API_KEY
+```
+
+## Main concepts demonstrated
+
+- LangGraph `StateGraph`
+- Graph `START`
+- Message state
+- Tool binding with `bind_tools`
+- `ToolNode`
+- `tools_condition`
+- Conditional tool execution
+- Function/tool calling
+- DuckDuckGo search tool
+- Mathematical Python tools
+- Groq + LangChain integration
 
