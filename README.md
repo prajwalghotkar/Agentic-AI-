@@ -473,3 +473,4 @@ GROQ_API_KEY
 - Mathematical Python tools
 - Groq + LangChain integration
 
+https://github.com/prajwalghotkar/Agentic-AI-/blob/main/langgraph_tools_Bindings_agents_groq.ipynb
